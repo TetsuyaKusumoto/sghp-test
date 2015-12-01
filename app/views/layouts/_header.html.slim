@@ -1,0 +1,48 @@
+header
+  nav.navbar.navbar-default.navbar-fixed-top
+    .container-fluid
+      .navbar-inner
+        .navbar-header
+          button.navbar-toggle.collapsed[type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"]
+            span.sr-only
+              | Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          h1.logo
+            = link_to "MONOLIST", root_path, class: "navbar-brand"
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            - unless logged_in?
+              li
+                = link_to "新規登録", signup_path
+              li
+                = link_to "ログイン", login_path
+            - else
+              li
+                = link_to new_item_path do
+                  span.glyphicon.glyphicon-plus[aria-hidden="true"]
+                  |  アイテムを追加 
+              li.dropdown
+                a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"]
+                  span.glyphicon.glyphicon-signal[aria-hidden="true"]
+                  |  ランキング 
+                  span.caret
+                ul.dropdown-menu
+                  li
+                    = link_to "Have" , have_ranking_path
+                  li.divider[role="separator"]
+                  li
+                    = link_to "Want", want_ranking_path
+              li.dropdown
+                a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"]
+                  span.gravatar
+                    = gravatar_for current_user , size: 20
+                  = current_user.name
+                  span.caret
+                ul.dropdown-menu
+                  li
+                    = link_to "プロフィール" , current_user
+                  li.divider[role="separator"]
+                  li
+                    = link_to "ログアウト", logout_path, method: "delete"

@@ -25,6 +25,11 @@ gem 'bootstrap-sass'
 gem 'slim-rails'
 gem 'html2slim'
 
+#Bootswatch
+gem 'twitter-bootswatch-rails', '~> 3.1.1'
+gem 'twitter-bootswatch-rails-helpers'
+gem 'execjs'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
